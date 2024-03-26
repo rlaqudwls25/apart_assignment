@@ -1,24 +1,34 @@
 import { getUser } from '@/apis/getUser'
 import SearchBar from '@/components/search/SearchBar'
 import UserList from '@/components/user/List'
+import { useInfiniteScroll } from '@/hooks/useInfiniteScroll'
 import { useInfiniteQuery } from '@tanstack/react-query'
-import { useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 
 const UserPage = () => {
   const [userName, setUserName] = useState<string>('')
+  const ref = useRef<HTMLDivElement>(null)
+  const isIntersect = useInfiniteScroll(ref)
 
-  const { data } = useInfiniteQuery({
+  useEffect(() => {
+    fetchMoreData()
+  }, [isIntersect])
+
+  const { data, hasNextPage, fetchNextPage } = useInfiniteQuery({
     queryKey: ['users', userName],
     queryFn: ({ pageParam = 1 }) => getUser({ userName, pageParam }),
     initialPageParam: 1,
     enabled: !!userName,
-    getNextPageParam: (snapshot: any) => {
-      console.log('snapshot', snapshot)
-      return snapshot.total_count
+    getNextPageParam: (lastPage, allPlages) => {
+      return lastPage.items.length === 20 ? allPlages.length + 1 : null
     },
   })
 
-  console.log('data', data)
+  const fetchMoreData = () => {
+    if (isIntersect && hasNextPage) {
+      fetchNextPage()
+    }
+  }
 
   const onSearch = (keyword: string) => {
     setUserName(keyword)
@@ -27,7 +37,8 @@ const UserPage = () => {
   return (
     <>
       <SearchBar onSearch={onSearch} />
-      <UserList />
+      <UserList list={data?.pages || []} />
+      <div ref={ref} />
     </>
   )
 }

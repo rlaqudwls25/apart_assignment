@@ -11,8 +11,6 @@ const SearchBar = ({
   const handleSearch = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { value } = e.target
 
-    console.log('value', value)
-
     setSearchKeyword(value)
   }
 
