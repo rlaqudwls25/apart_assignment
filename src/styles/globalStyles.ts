@@ -1,6 +1,8 @@
 import { css } from '@emotion/react'
+import { colorPalette } from './colors'
 
 export default css`
+  ${colorPalette}
   html,
   body,
   div,
@@ -89,7 +91,6 @@ export default css`
     font: inherit;
     vertical-align: baseline;
   }
-  /* HTML5 display-role reset for older browsers */
   article,
   aside,
   details,
@@ -103,9 +104,7 @@ export default css`
   section {
     display: block;
   }
-  body {
-    line-height: 1;
-  }
+  body,
   ol,
   ul {
     list-style: none;
