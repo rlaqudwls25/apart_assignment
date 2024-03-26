@@ -1,5 +1,6 @@
 import { getUser } from '@/apis/getUser'
 import SearchBar from '@/components/search/SearchBar'
+import Loader from '@/components/shared/Loader'
 import UserList from '@/components/user/List'
 import { useInfiniteScroll } from '@/hooks/useInfiniteScroll'
 import { useInfiniteQuery } from '@tanstack/react-query'
@@ -14,7 +15,7 @@ const UserPage = () => {
     fetchMoreData()
   }, [isIntersect])
 
-  const { data, hasNextPage, fetchNextPage } = useInfiniteQuery({
+  const { data, hasNextPage, fetchNextPage, isLoading } = useInfiniteQuery({
     queryKey: ['users', userName],
     queryFn: ({ pageParam = 1 }) => getUser({ userName, pageParam }),
     initialPageParam: 1,
@@ -38,6 +39,7 @@ const UserPage = () => {
     <>
       <SearchBar onSearch={onSearch} />
       <UserList list={data?.pages || []} />
+      {isLoading && <Loader />}
       <div ref={ref} />
     </>
   )
