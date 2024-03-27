@@ -11,13 +11,7 @@ const HomeIcon = () => {
         <title />
         <desc />
         <defs />
-        <g
-          fill="none"
-          fill-rule="evenodd"
-          id="Page-1"
-          stroke="none"
-          stroke-width="1"
-        >
+        <g fill="none" id="Page-1" stroke="none">
           <g
             fill="#000000"
             id="Core"
