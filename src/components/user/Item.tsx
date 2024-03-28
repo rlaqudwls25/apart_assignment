@@ -8,6 +8,7 @@ import BookmarkIcon from '../icons/Bookmark'
 import { useRecoilState } from 'recoil'
 import { bookmarkListState } from '@/recoil/user'
 import React from 'react'
+import { toast } from 'react-toastify'
 
 const UserListItem = ({ id, login, avatar_url }: UserInfo) => {
   const [bookmarks, setBookmarks] = useRecoilState(bookmarkListState)
@@ -16,8 +17,10 @@ const UserListItem = ({ id, login, avatar_url }: UserInfo) => {
     setBookmarks((prevBookmarks) => {
       const isBookmarked = prevBookmarks.some((item) => item.id === id)
       if (isBookmarked) {
+        toast.error('북마크가 삭제되었습니다.')
         return prevBookmarks.filter((item) => item.id !== id)
       } else {
+        toast.success('북마크가 추가되었습니다.')
         return [...prevBookmarks, { id, login, avatar_url }]
       }
     })
@@ -55,7 +58,7 @@ const UserListItem = ({ id, login, avatar_url }: UserInfo) => {
 const ImageStyle = css`
   border-radius: 50%;
   border: 1px solid ${colors.grey};
-  margin-right: 4px;
+  margin-right: 8px;
 `
 
 const ListItemContentsStyle = css`

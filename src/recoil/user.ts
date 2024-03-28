@@ -1,6 +1,8 @@
 import { UserInfo } from '@/types/user'
-import { atom } from 'recoil'
+import { RecoilEnv, atom } from 'recoil'
 import { recoilPersist } from 'recoil-persist'
+
+RecoilEnv.RECOIL_DUPLICATE_ATOM_KEY_CHECKING_ENABLED = false
 
 const localStorage =
   typeof window !== 'undefined' ? window.localStorage : undefined

@@ -13,16 +13,17 @@ const BookmarkList = ({
   return (
     <BookmarkListContainer>
       {bookmarkUserData.map((user) => {
+        const { id, login, avatar_url } = user
         return (
-          <Flex align="center" key={user.id} css={ListItemStyles}>
+          <Flex align="center" key={id} css={ListItemStyles}>
             <Image
-              src={user.avatar_url}
+              src={avatar_url}
               alt="유저 프로필"
               width={50}
               height={50}
               css={ImageStyle}
             />
-            {user.login}
+            {login}
           </Flex>
         )
       })}

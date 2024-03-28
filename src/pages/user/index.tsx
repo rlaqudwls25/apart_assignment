@@ -17,7 +17,7 @@ const UserPage = () => {
 
   const { data, hasNextPage, fetchNextPage, isLoading } = useInfiniteQuery({
     queryKey: ['users', userName],
-    queryFn: ({ pageParam = 1 }) => getUser({ userName, pageParam }),
+    queryFn: ({ pageParam }) => getUser({ userName, pageParam }),
     initialPageParam: 1,
     enabled: !!userName,
     getNextPageParam: (lastPage, allPlages) => {

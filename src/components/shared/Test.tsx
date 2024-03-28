@@ -1,10 +1,8 @@
 import { CSSProperties } from 'react'
 import styled from '@emotion/styled'
-// import { Typography, typographyMap } from '@styles/typography'
 import { colors, Colors } from '@styles/colors'
 
 interface TextProps {
-  //   typography?: Typography
   color?: Colors
   display?: CSSProperties['display']
   textAlign?: CSSProperties['textAlign']
@@ -19,7 +17,6 @@ const Text = styled.span<TextProps>(
     textAlign,
     fontWeight: bold ? 'bold' : fontWeight,
   }),
-  //   ({ typography = 't4' }) => typographyMap[typography],
 )
 
 export default Text
