@@ -1,6 +1,6 @@
 import { UserInfo } from '@/types/user'
 import Flex from '@components/shared/Flex'
-import Text from '@components/shared/Test'
+import Text from '@/components/shared/Text'
 import Image from 'next/image'
 import { css } from '@emotion/react'
 import { colors } from '@/styles/colors'
@@ -17,7 +17,7 @@ const UserListItem = ({ id, login, avatar_url }: UserInfo) => {
     setBookmarks((prevBookmarks) => {
       const isBookmarked = prevBookmarks.some((item) => item.id === id)
       if (isBookmarked) {
-        toast.error('북마크가 삭제되었습니다.')
+        toast.error('북마크가 해제되었습니다.')
         return prevBookmarks.filter((item) => item.id !== id)
       } else {
         toast.success('북마크가 추가되었습니다.')

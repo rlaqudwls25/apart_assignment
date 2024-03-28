@@ -17,7 +17,7 @@ const SearchBar = ({
 
   const handleKeyPress = (e: React.KeyboardEvent<HTMLInputElement>) => {
     if (e.key === 'Enter') {
-      onSearch(searchKeyword)
+      onSearch(searchKeyword.toLocaleLowerCase())
     }
   }
 
