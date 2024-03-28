@@ -9,8 +9,9 @@ import { useRecoilState } from 'recoil'
 import { bookmarkListState } from '@/recoil/user'
 import React from 'react'
 import { toast } from 'react-toastify'
+import Link from 'next/link'
 
-const UserListItem = ({ id, login, avatar_url }: UserInfo) => {
+const UserListItem = ({ id, login, avatar_url, html_url }: UserInfo) => {
   const [bookmarks, setBookmarks] = useRecoilState(bookmarkListState)
 
   const addBookmark = (id: number) => {
@@ -37,7 +38,12 @@ const UserListItem = ({ id, login, avatar_url }: UserInfo) => {
             height={50}
             css={ImageStyle}
           />
-          <Text>{login}</Text>
+          <Flex direction="column">
+            <Text color="black">{login}</Text>
+            <Link href={`${html_url}`}>
+              <Text color="gray400">User Repo</Text>
+            </Link>
+          </Flex>
         </Flex>
         <Flex>
           <button
