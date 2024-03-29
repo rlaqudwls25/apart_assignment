@@ -34,9 +34,9 @@ const SearchBar = ({
 }
 
 const SearchBarContainer = styled.div`
-  width: 90%;
+  width: 30%;
   margin: 0 auto;
-  padding-top: 70px;
+  padding-top: 80px;
 `
 
 export default SearchBar
