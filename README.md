@@ -74,5 +74,5 @@
 └── yarn.lock
 ```
 
-### 3. 배포
+### 4. 배포
 [배포링크](https://apart-assignment.vercel.app/)
