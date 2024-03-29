@@ -12,6 +12,7 @@
 
 
 ### 2. 과제 설명
+* github에서 제공해주는 [user search api](https://docs.github.com/en/rest/search/search?apiVersion=2022-11-28#search-users/) 를 사용하였습니다.
 * <div>page 단위로는 user와 bookmark가 있고 각각 유저를 검색해서 리스트를 보여주었고, 북마크된 유저를 모아서 볼 수 있도록 구성하였습니다.</div>
 * <div>components 단위로는 다른 곳에서 사용할 수 있도록 공통 컴포넌트를 만들어서 재사용을 할 수 있게 하였고, emotion을 사용하므로써 동적 스타일링을 사용하여 유연하고 직관적이게 마크업을 진행하였습니다. </div>
 * <div>첫번째 요구사항에서 주어진 검색 기능에서는 onKeyDown 이벤트를 발생 시켜 해당 input value인 keyword값을 onSearch를 통해 부모 컴포넌트에게 전달해서 keyword값이 있을 때 userList가 나오도록 하였고, 무한 스크롤은 intersectionObserver api 와 useInfiniteQuery를 사용하여 스크롤 시 20개씩 userList가 나오도록 기능을 구현하였습니다.</div>
