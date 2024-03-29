@@ -22,6 +22,7 @@ const BookmarkList = ({
               width={50}
               height={50}
               css={ImageStyle}
+              priority
             />
             {login}
           </Flex>

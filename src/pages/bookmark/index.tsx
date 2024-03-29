@@ -1,17 +1,12 @@
-import { bookmarkListState } from '@/recoil/user'
-import dynamic from 'next/dynamic'
-import { useRecoilValue } from 'recoil'
-
-const BookmarkList = dynamic(() => import('@/components/bookmark/List'), {
-  ssr: false,
-})
+import BookmarkList from '@/components/bookmark/List'
+import useClient from '@/hooks/useClient'
 
 const BookmarkPage = () => {
-  const bookmarkUser = useRecoilValue(bookmarkListState)
+  const clientBookmarksList = useClient()
 
   return (
     <>
-      <BookmarkList bookmarkUserData={bookmarkUser} />
+      <BookmarkList bookmarkUserData={clientBookmarksList} />
     </>
   )
 }
